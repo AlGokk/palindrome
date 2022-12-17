@@ -3,10 +3,10 @@ export const Tokens = {
     {
       id: 0,
       name: "BNB",
-      address: "0x28d4bBD1Be87FD0674d130a0680767c01824bCCF",
+      address: "0x5b3e2bc1da86ff6235d9ead4504d598cae77dbcb",
       symbol: "BNB",
       decimals: 18,
-      logoURI: "https://s2.coinmarketcap.com/static/img/coins/64x64/5805.png",
+      logoURI: "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png",
     },
     {
       id: 3,
