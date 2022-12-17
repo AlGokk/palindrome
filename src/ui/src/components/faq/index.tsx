@@ -22,11 +22,6 @@ const faqs = [
   <h3 class="font-bold">Commerce</h3>
   Commerce - Buy and sell products with Escrow Service. The title and doc/image are military-grade encrypted.
   </li>
-  <li class="p-2">
-    <h3 class="font-bold">Send transactions with description (encrypted)</h3>
-    Motivation: The first-ever send transaction with a description over the blockchain for a test-order was made by Satoshi Nakamoto over the wallet Bitcoin v0.1 Alpha in 2009.
-<a class="text-sky-600 text-bold" href="https://www.reddit.com/r/Bitcoin/comments/uq3dni/bitcoin_v01_alpha_in_jan_2009_by_satoshi_nakamoto/" target="_blank" rel="noreferrer" >Link</a>
- </li>
 <li class="p-2 pt-2">
   <h3 class="font-bold">
     Payroll
