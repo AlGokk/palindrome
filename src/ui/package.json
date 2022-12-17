@@ -1,0 +1,85 @@
+{
+  "name": "palindrome.finance",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.6.2",
+    "@headlessui/react": "^1.5.0",
+    "@heroicons/react": "^1.0.6",
+    "@tailwindcss/forms": "^0.5.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^16.11.39",
+    "@types/react": "^18.0.2",
+    "@types/react-dom": "^18.0.2",
+    "@walletconnect/web3-provider": "^1.7.8",
+    "axios": "^0.26.1",
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "eth-permit": "^0.2.1",
+    "ethers": "^5.6.4",
+    "express": "^4.17.3",
+    "graphql": "^16.4.0",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.24",
+    "moment": "^2.29.3",
+    "mongoose": "^6.1.30",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1",
+    "react-window": "^1.8.7",
+    "typescript": "^4.1.6",
+    "web-vitals": "^2.1.4",
+    "web3.storage": "^4.3.0"
+  },
+  "scripts": {
+    "start": "GENERATE_SOURCEMAP=false react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "server": "nodemon src/server/server.js",
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run server\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-window": "^1.8.5",
+    "assert": "^2.0.0",
+    "autoprefixer": "^10.4.7",
+    "buffer": "^6.0.3",
+    "concurrently": "^7.1.0",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "postcss": "^8.4.14",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.1.4",
+    "url": "^0.11.0"
+  }
+}

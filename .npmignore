@@ -1,0 +1,4 @@
+hardhat.config.ts
+src/scripts
+src/test
+src/contracts
