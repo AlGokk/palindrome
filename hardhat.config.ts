@@ -27,8 +27,8 @@ const config: HardhatUserConfig = {
     hardhat: {
       allowUnlimitedContractSize: true,
     },
-    fuji: {
-      url: process.env.FUJI,
+    bscTest: {
+      url: process.env.TEST,
       accounts:
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },

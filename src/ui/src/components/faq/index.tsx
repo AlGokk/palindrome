@@ -64,7 +64,7 @@ Over the Palindrome Crypto Escrow System, a freelancer for example is able to up
   },
   {
     question: "What is the total supply?",
-    answer: `The total supply is 21 trillion. No more tokens can be minted.`,
+    answer: `The total supply is 1 billion. No more tokens can be minted.`,
   },
   {
     question: "Which networks are supported?",

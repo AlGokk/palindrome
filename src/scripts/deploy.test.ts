@@ -9,23 +9,17 @@ import { pack, keccak256 } from "@ethersproject/solidity";
 import Merchant from "../ui/src/artifacts/src/contracts/PalindromeSystem.sol/PalindromeSystem.json";
 import OrderBook from "../ui/src/artifacts/src/contracts/PalindromeOrderBook.sol/PalindromeOrderBook.json";
 
-network.provider.send("hardhat_reset");
+// network.provider.send("hardhat_reset");
 async function main() {
-  let merchant0: any,
-    merchant1: any,
-    customer0: any,
-    customer1: any,
-    feeTo: any;
   let Token: any, token: any;
   let WETH: any, weth: any;
-  let PalindromeRouter: any, palindromePayRouter: any;
-  let PalindromeFactory: any, palindromePayFactory: any;
-  let PalindromeERC20: any, palindromePayERC20: any;
-  let PalindromeLibrary: any, palindromePayLibrary: any;
-
-  [merchant0, merchant1, customer0, customer1, feeTo] =
-    await ethers.getSigners();
-  const merchantID = "455689";
+  let PalindromeRouter: any, palindromeRouter: any;
+  let PalindromeFactory: any, palindromeFactory: any;
+  let PalindromeERC20: any, palindromeERC20: any;
+  let PalindromeLibrary: any, palindromeLibrary: any;
+  const owner = { address: "0xE90482941F4344bC3583af88279b2fF06Ed19a95" };
+  const feeTo = "0x5A87e71335b2Fdd0CAecc66a62FE75b751ce1249";
+  const merchantID = "9955678";
   Token = await ethers.getContractFactory("TokenA");
   token = await Token.deploy();
   await token.deployed();
@@ -35,26 +29,23 @@ async function main() {
   await weth.deployed();
 
   PalindromeFactory = await ethers.getContractFactory("PalindromeFactory");
-  palindromePayFactory = await PalindromeFactory.deploy(
-    feeTo.address,
-    weth.address
-  );
-  await palindromePayFactory.deployed();
+  palindromeFactory = await PalindromeFactory.deploy(feeTo, weth.address);
+  await palindromeFactory.deployed();
 
   PalindromeERC20 = await ethers.getContractFactory("PalindromeERC20");
-  palindromePayERC20 = await PalindromeERC20.deploy();
-  await palindromePayERC20.deployed();
+  palindromeERC20 = await PalindromeERC20.deploy();
+  await palindromeERC20.deployed();
 
   PalindromeLibrary = await ethers.getContractFactory("PalindromeLibrary");
-  palindromePayLibrary = await PalindromeLibrary.deploy();
-  await palindromePayLibrary.deployed();
+  palindromeLibrary = await PalindromeLibrary.deploy();
+  await palindromeLibrary.deployed();
 
   PalindromeRouter = await ethers.getContractFactory("PalindromeRouter");
-  palindromePayRouter = await PalindromeRouter.deploy(
-    palindromePayFactory.address,
+  palindromeRouter = await PalindromeRouter.deploy(
+    palindromeFactory.address,
     weth.address
   );
-  await palindromePayRouter.deployed();
+  await palindromeRouter.deployed();
 
   async function computeMerchantAddress(
     factoryAddress: any,
@@ -93,15 +84,15 @@ async function main() {
     const INIT_HASH_ORDERBOOK = keccak256(["bytes"], [OrderBook.bytecode]);
 
     const paymentSystemUID = await computeMerchantAddress(
-      palindromePayFactory.address,
-      merchant0.address,
-      "455689",
+      palindromeFactory.address,
+      owner.address,
+      merchantID,
       INIT_HASH_PAYMENT_SYSTEM
     );
 
     const orderBookUID = await computeOrderBookAddress(
-      palindromePayFactory.address,
-      merchant0.address, //msg.sender
+      palindromeFactory.address,
+      owner.address, //msg.sender
       paymentSystemUID,
       INIT_HASH_ORDERBOOK
     );
@@ -111,14 +102,11 @@ async function main() {
 
   const [paymentSystemUID, orderBookUID] = await generateUIDS();
 
-  const tx = await palindromePayRouter.createPaymentSystem(
-    merchant0.address,
-    merchantID
-  );
+  const tx = await palindromeRouter.createPaymentSystem();
   await tx.wait(1);
 
-  console.log(`Factory deployed to ${palindromePayFactory.address}`);
-  console.log(`Router deployed to ${palindromePayRouter.address}`);
+  console.log(`Factory deployed to ${palindromeFactory.address}`);
+  console.log(`Router deployed to ${palindromeRouter.address}`);
   console.log(`Token deployed to ${token.address}`);
   console.log(`PaymentUID is ${paymentSystemUID}`);
   console.log(`OrderUID is ${orderBookUID}`);
